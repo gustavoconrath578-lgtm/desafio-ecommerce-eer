@@ -1,0 +1,99 @@
+erDiagram
+    CLIENTE ||--o| CLIENTE_PF : "especializa em PF"
+    CLIENTE ||--o| CLIENTE_PJ : "especializa em PJ"
+    CLIENTE ||--o{ PEDIDO : realiza
+    CLIENTE ||--o{ FORMA_PAGAMENTO : cadastra
+
+    PEDIDO ||--|{ ITEM_PEDIDO : contem
+    PRODUTO ||--o{ ITEM_PEDIDO : integra
+
+    PEDIDO ||--o{ PAGAMENTO : registra
+    FORMA_PAGAMENTO ||--o{ PAGAMENTO : utilizada_em
+    PEDIDO ||--o| ENTREGA : possui
+
+    FORNECEDOR }o--o{ PRODUTO : fornece
+    VENDEDOR_TERCEIRO }o--o{ PRODUTO : comercializa
+    ESTOQUE ||--o{ PRODUTO_ESTOQUE : controla
+    PRODUTO ||--o{ PRODUTO_ESTOQUE : armazenado_em
+
+    CLIENTE {
+        int id_cliente PK
+        string nome
+        string email UK
+        string telefone
+    }
+    CLIENTE_PF {
+        int id_cliente PK,FK
+        string cpf UK
+        date data_nascimento
+    }
+    CLIENTE_PJ {
+        int id_cliente PK,FK
+        string cnpj UK
+        string razao_social
+        string nome_fantasia
+    }
+    PEDIDO {
+        int id_pedido PK
+        date data_pedido
+        string status_pedido
+        decimal valor_total
+        int id_cliente FK
+    }
+    ITEM_PEDIDO {
+        int id_pedido PK,FK
+        int id_produto PK,FK
+        int quantidade
+        decimal preco_unitario
+    }
+    PRODUTO {
+        int id_produto PK
+        string nome
+        string descricao
+        decimal preco
+        string categoria
+    }
+    FORMA_PAGAMENTO {
+        int id_forma_pagamento PK
+        int id_cliente FK
+        string tipo
+        string identificador_mascarado
+        string token_referencia
+    }
+    PAGAMENTO {
+        int id_pagamento PK
+        int id_pedido FK
+        int id_forma_pagamento FK
+        decimal valor
+        date data_pagamento
+        string status_pagamento
+    }
+    ENTREGA {
+        int id_entrega PK
+        int id_pedido FK,UK
+        string status_entrega
+        string codigo_rastreio UK
+        string transportadora
+        date data_envio
+        date data_prevista
+        date data_entrega
+    }
+    FORNECEDOR {
+        int id_fornecedor PK
+        string razao_social
+        string cnpj UK
+    }
+    VENDEDOR_TERCEIRO {
+        int id_vendedor PK
+        string nome
+        string documento UK
+    }
+    ESTOQUE {
+        int id_estoque PK
+        string localizacao
+    }
+    PRODUTO_ESTOQUE {
+        int id_produto PK,FK
+        int id_estoque PK,FK
+        int quantidade
+    }
