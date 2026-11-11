@@ -2,11 +2,11 @@
 
 ## Sobre o projeto
 
-Este projeto faz parte de um desafio de modelagem de banco de dados. O objetivo foi criar e refinar um modelo conceitual para um sistema de e-commerce, pensando em como as informações de uma loja virtual se relacionam.
+Esse projeto faz parte do desafio de modelagem de banco de dados. O objetivo foi criar e refinar um modelo conceitual para um sistema de e-commerce, pensando em como as informações de uma loja virtual se relacionam.
 
 No modelo, temos clientes, produtos, pedidos, formas de pagamento, entregas e também informações de estoque, fornecedores e vendedores. A ideia foi organizar essas entidades de um jeito que faça sentido para o funcionamento de uma loja online.
 
-## O que foi melhorado no modelo?
+## Funcionalidades:
 
 **1. Clientes Pessoa Física e Pessoa Jurídica**
 
